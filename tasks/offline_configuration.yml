@@ -22,7 +22,7 @@
     state: absent
 
 - name: ensure database is synced
-  command: /usr/bin/keystone-manage db_sync keystone
+  command: /usr/bin/keystone-manage db_sync
   when: keystone_dockerize_context is defined or
         create_keystone_db|changed
 
