@@ -30,7 +30,11 @@
       ansible-playbook -i inventories/local.ini deploy.yml -e '{ 
         "keystone_dockerize_context" : "offline_configuration", 
         "keystone_admin_token" : "{{ keystone_admin_token }}",
+        "keystone_log_dir" : "{{ keystone_log_dir }}",
+        "keystone_log_verbose" : "{{ keystone_log_verbose }}",
+        "keystone_log_debug" : "{{ keystone_log_debug }}",
         "keystone_mysql_host" : "{{ keystone_mysql_host }}",
+        "keystone_mysql_port" : "{{ keystone_mysql_port }}",
         "keystone_mysql_keystone_password" : 
           "{{ keystone_mysql_keystone_password }}" }'
     detach: no
@@ -62,7 +66,8 @@
     command: >
       ansible-playbook -i inventories/local.ini deploy.yml -e '{
         "keystone_dockerize_context" : "online_configuration",
-        "keystone_endpoint_host" : "{{ ansible_docker0['ipv4']['address'] }}",
+        "keystone_identity_endpoint_host" : 
+          "{{ ansible_docker0['ipv4']['address'] }}",
         "keystone_admin_token" : "{{ keystone_admin_token }}", 
         "keystone_keystone_admin_password" :
           "{{ keystone_keystone_admin_password }}" }'

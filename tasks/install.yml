@@ -22,4 +22,4 @@
     name: keystone
     state: stopped
     enabled: yes
- 
+  when: keystone_dockerize_context is defined

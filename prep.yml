@@ -4,7 +4,7 @@
   sudo: True
   roles:
     - marklee77.docker
-    - { role: marklee77.mariadb, mariadb_bind_address: 0.0.0.0 }
+    - marklee77.mariadb
 
 - hosts: all
   gather_facts: True
