@@ -57,25 +57,25 @@
     detach: yes
     state: running
 
-- name: perform keystone docker online configuration
-  docker:
-    image: "{{ keystone_docker_username }}/{{ keystone_docker_imagename }}"
-    name: "{{ keystone_docker_containername }}_configure"
-    volumes_from: "{{ keystone_docker_containername }}_data"
-    detach: no
-    command: >
-      ansible-playbook -i inventories/local.ini deploy.yml -e '{
-        "keystone_dockerize_context" : "online_configuration",
-        "keystone_identity_endpoint_host" : 
-          "{{ ansible_docker0['ipv4']['address'] }}",
-        "keystone_identity_admin_token" : "{{ keystone_identity_admin_token }}", 
-        "keystone_identity_admin_password" :
-          "{{ keystone_identity_admin_password }}" }'
-    state: present
+#- name: perform keystone docker online configuration
+#  docker:
+#    image: "{{ keystone_docker_username }}/{{ keystone_docker_imagename }}"
+#    name: "{{ keystone_docker_containername }}_configure"
+#    volumes_from: "{{ keystone_docker_containername }}_data"
+#    detach: no
+#    command: >
+#      ansible-playbook -i inventories/local.ini deploy.yml -e '{
+#        "keystone_dockerize_context" : "online_configuration",
+#        "keystone_identity_endpoint_host" : 
+#          "{{ ansible_docker0['ipv4']['address'] }}",
+#        "keystone_identity_admin_token" : "{{ keystone_identity_admin_token }}", 
+#        "keystone_identity_admin_password" :
+#          "{{ keystone_identity_admin_password }}" }'
+#    state: present
 
-- name: wait until online configuration is completed
-  command: docker wait "{{ keystone_docker_containername }}_configure"
-  register: docker_wait
-  changed_when: false
-  failed_when: docker_wait.stdout != "0"
+#- name: wait until online configuration is completed
+#  command: docker wait "{{ keystone_docker_containername }}_configure"
+#  register: docker_wait
+#  changed_when: false
+#  failed_when: docker_wait.stdout != "0"
 
