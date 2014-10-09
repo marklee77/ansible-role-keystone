@@ -7,7 +7,7 @@
     value: "{{ item.value }}"
   with_items:
     - { section: DEFAULT, 
-        option: admin_token, value: "{{ keystone_admin_token }}" }
+        option: admin_token, value: "{{ keystone_identity_admin_token }}" }
     - { section: DEFAULT, option: log_dir, value: "{{ keystone_log_dir }}" }
     - { section: DEFAULT, option: verbose, value: "{{ keystone_log_verbose }}" }
     - { section: DEFAULT, option: debug, value: "{{ keystone_log_debug }}" }

@@ -29,7 +29,7 @@
     command: >
       ansible-playbook -i inventories/local.ini deploy.yml -e '{ 
         "keystone_dockerize_context" : "offline_configuration", 
-        "keystone_admin_token" : "{{ keystone_admin_token }}",
+        "keystone_identity_admin_token" : "{{ keystone_identity_admin_token }}",
         "keystone_log_dir" : "{{ keystone_log_dir }}",
         "keystone_log_verbose" : "{{ keystone_log_verbose }}",
         "keystone_log_debug" : "{{ keystone_log_debug }}",
