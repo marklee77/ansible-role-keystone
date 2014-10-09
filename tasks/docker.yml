@@ -68,9 +68,9 @@
         "keystone_dockerize_context" : "online_configuration",
         "keystone_identity_endpoint_host" : 
           "{{ ansible_docker0['ipv4']['address'] }}",
-        "keystone_admin_token" : "{{ keystone_admin_token }}", 
-        "keystone_keystone_admin_password" :
-          "{{ keystone_keystone_admin_password }}" }'
+        "keystone_identity_admin_token" : "{{ keystone_identity_admin_token }}", 
+        "keystone_identity_admin_password" :
+          "{{ keystone_identity_admin_password }}" }'
     state: present
 
 - name: wait until online configuration is completed
