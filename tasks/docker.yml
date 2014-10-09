@@ -31,7 +31,6 @@
         "keystone_dockerize_context" : "offline_configuration", 
         "keystone_admin_token" : "{{ keystone_admin_token }}",
         "keystone_mysql_host" : "{{ keystone_mysql_host }}",
-        "keystone_mysql_root_password" : "{{ keystone_mysql_root_password }}",
         "keystone_mysql_keystone_password" : 
           "{{ keystone_mysql_keystone_password }}" }'
     detach: no
