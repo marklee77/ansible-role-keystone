@@ -34,7 +34,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "deploy.yml"
     ansible.extra_vars = {
       keystone_dockerized_deployment: true,
-      keystone_mysql_host: "{{ ansible_docker0['ipv4']['address'] }}"
     }
   end
 
