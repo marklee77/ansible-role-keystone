@@ -4,9 +4,11 @@ MAINTAINER Mark Stillwell <mark@stillwell.me>
 COPY . /var/cache/docker/keystone
 WORKDIR /var/cache/docker/keystone
 
-RUN mkdir -p roles && ln -snf .. roles/marklee77.keystone
-RUN ansible-playbook -i inventories/local.ini deploy.yml -e '{ \
-      "keystone_dockerize_context" : "install" }'
+RUN if [ ! -f playbooks/group_vars/all.yml ]; then \
+      mkdir -p playbooks/group_vars;\
+      ln -s ../../defaults/main.yml playbooks/group_vars/all.yml;\
+    fi
+RUN ansible-playbook -i inventories/local.ini playbooks/install.yml
 
 VOLUME [ "/etc/keystone", "/var/lib/keystone", "/var/log/keystone" ]
 
