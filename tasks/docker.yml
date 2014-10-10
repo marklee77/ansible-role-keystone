@@ -42,7 +42,7 @@
     name: "{{ keystone_docker_containername }}_data"
     command: >
       ansible-playbook 
-        -i inventories/local.ini playbooks/offline_conffiguration.yml '{ 
+        -i inventories/local.ini playbooks/offline_configuration.yml -e '{ 
           "keystone_identity_admin_token" : "{{ keystone_identity_admin_token }}",
           "keystone_log_dir" : "{{ keystone_log_dir }}",
           "keystone_log_verbose" : "{{ keystone_log_verbose }}",
@@ -58,16 +58,19 @@
   command: docker wait "{{ keystone_docker_containername }}_data"
   register: docker_wait
   changed_when: false
-  failed_when: docker_wait.stdout != "0"
 
 - name: collect offline configuration log
-  command: docker logs "{{ mariadb_docker_containername }}_data"
+  command: docker logs "{{ keystone_docker_containername }}_data"
   register: offline_configuration_log
   changed_when: false
 
 - name: display offline configuration log
   debug:
     msg: "{{ offline_configuration_log.stdout_lines }}"
+
+- name: fail on offline configuration failure
+  assert:
+    that: docker_wait.stdout == "0"
 
 - name: ensure keystone service is running
   docker:
