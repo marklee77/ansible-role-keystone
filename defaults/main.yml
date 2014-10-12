@@ -27,7 +27,6 @@ keystone_log_dir: /var/log/keystone
 keystone_log_verbose: False
 keystone_log_debug: False
 
-# need a better scheme here...
 keystone_identity_endpoint_host: 127.0.0.1
 keystone_identity_admin_url: >
   http://{{ keystone_identity_endpoint_host }}:35357/v2.0
