@@ -2,7 +2,7 @@
 - hosts: all
   sudo: True
   vars:
-    keystone_dockerized_deployment: true
+    keystone_dockerized_deployment: True
  
   roles:
     - marklee77.keystone
