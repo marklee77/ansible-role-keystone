@@ -3,12 +3,11 @@
   sudo: True
   tasks:
 
-    - name: ensure packages required for testing are installed
-      apt:
-        pkg: python-keystoneclient
-        state: latest
-        update_cache: yes
-        cache_valid_time: 600
+    - name: update admin.openrc from template
+      template:
+        src: templates/admin.openrc
+        dest: "{{ ansible_env.PWD }}/admin.openrc"
+        owner: "{{ ansible_ssh_user }}"
 
     - name: create demo tenant
       keystone_user:

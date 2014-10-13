@@ -8,4 +8,5 @@
 - /group_vars
 - /private
 - /roles
-- /templates
+- /templates/admin.openrc
+- /templates/ansible_cache

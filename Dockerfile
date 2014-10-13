@@ -10,8 +10,9 @@ RUN if [ ! -f playbooks/group_vars/all.yml ]; then \
     fi
 RUN ansible-playbook -i inventories/local.ini playbooks/install.yml
 
-VOLUME [ "/etc/keystone", "/var/lib/keystone", "/var/log/keystone" ]
+VOLUME [ "/etc/keystone", "/var/lib/keystone", "/var/log/keystone", \
+         "/var/log/supervisor" ]
 
-CMD [ "sudo", "-u", "keystone", "/usr/bin/keystone-all" ]
+CMD [ "/usr/bin/supervisord" ]
 
 EXPOSE 5000 35357

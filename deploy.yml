@@ -1,5 +1,8 @@
 ---
 - hosts: all
   sudo: True
+  vars:
+    keystone_dockerized_deployment: true
+ 
   roles:
     - marklee77.keystone
