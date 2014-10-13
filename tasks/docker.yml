@@ -32,7 +32,7 @@
 
 - name: ensure keystone docker image has been built
   docker_image:
-    name: "{{ keystone_docker_username }}/keystone"
+    name: "{{ keystone_docker_username }}/{{ keystone_docker_imagename }}"
     path: "{{ ansible_env.PWD }}/.ansible_cache/docker/keystone"
     state: present
 
