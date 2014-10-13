@@ -13,6 +13,7 @@ RUN ansible-playbook -i inventories/local.ini playbooks/install.yml
 VOLUME [ "/etc/keystone", "/var/lib/keystone", "/var/log/keystone", \
          "/var/log/supervisor" ]
 
-CMD [ "/usr/bin/supervisord" ]
+#CMD [ "/usr/bin/supervisord" ]
+CMD [ "sudo", "-u", "keystone", "/usr/bin/keystone-all" ]
 
 EXPOSE 5000 35357
