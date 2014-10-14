@@ -1,9 +1,9 @@
-marklee77.mariadb
+marklee77.keystone
 =================
 
-[![Build Status](https://travis-ci.org/marklee77/ansible-role-mariadb.svg?branch=master)](https://travis-ci.org/marklee77/ansible-role-mariadb)
+[![Build Status](https://travis-ci.org/marklee77/ansible-role-keystone.svg?branch=master)](https://travis-ci.org/marklee77/ansible-role-mariadb)
 
-The purpose of this role is to deploy MariaDB onto Ubuntu. There is also an
+The purpose of this role is to deploy keystone onto Ubuntu. There is also an
 support for an experimental "dockerized" deployment. This dockerized deployment
 copies the role to the target machine and uses the original ansible-based
 functionality to build a docker image, and then uses recent ansible features to
@@ -17,19 +17,12 @@ not (easily) run on travis.
 Role Variables
 --------------
 
-- mariadb_repository_mirror: http://mirrors.coreix.net/mariadb by default.
-- mariadb_version: 10.0
-- mariadb_mysql_root_password: random value
-- mariadb_enable_remote: false
-- mariadb_set_root_password: true
-
 The variables below only affect the dockerized deployment:
 
-- mariadb_dockerized_deployment: false
-- mariadb_docker_username: default
-- mariadb_docker_imagename: mariadb
-- mariadb_docker_containername: mariadb
-- mariadb_port: 3306
+- keystone_dockerized_deployment: false
+- keystone_docker_username: default
+- keystone_docker_imagename: keystone
+- keystone_docker_containername: keystone
 
 Example Playbook
 -------------------------
@@ -37,7 +30,7 @@ Example Playbook
     - hosts: all
       sudo: True
       roles:
-        - marklee77.mariadb
+        - marklee77.keystone
 
 License
 -------
@@ -59,6 +52,5 @@ Todo
 ----
 
 - problem running with supervisor...
-- delegate_to in order to allow for installing on hosts different from mariadb host...
-- combine offline/run/online with startup script? config info could be passed via environment variables as normal...
+- delegate_to for mysql 
 - keystone token flush cron job
