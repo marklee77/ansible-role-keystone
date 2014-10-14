@@ -50,8 +50,7 @@
           "keystone_mysql_host" : "{{ keystone_mysql_host }}",
           "keystone_mysql_port" : "{{ keystone_mysql_port }}",
           "keystone_mysql_keystone_password" : 
-            "{{ keystone_mysql_keystone_password }}",
-          "keystone_docker_host" : "{{ ansible_docker0['ipv4']['address'] }}" }'
+            "{{ keystone_mysql_keystone_password }}" }'
     detach: no
     state: present
 

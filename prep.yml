@@ -2,9 +2,6 @@
 - hosts: all
   gather_facts: True
   sudo: True
-  vars:
-    mariadb_bind_address: "0.0.0.0"
- 
   roles:
     - { role: marklee77.docker, when: keystone_dockerized_deployment }
     - marklee77.mariadb
