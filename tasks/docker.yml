@@ -47,10 +47,11 @@
           "keystone_log_dir" : "{{ keystone_log_dir }}",
           "keystone_log_verbose" : "{{ keystone_log_verbose }}",
           "keystone_log_debug" : "{{ keystone_log_debug }}",
-          "keystone_mysql_host" : "{% if keystone_mysql_host == "127.0.0.1" %}{{ ansible_docker0['ipv4']['address'] }}{% else %}{{ keystone_mysql_host }}{% endif %}",
+          "keystone_mysql_host" : "{{ keystone_mysql_host }}",
           "keystone_mysql_port" : "{{ keystone_mysql_port }}",
           "keystone_mysql_keystone_password" : 
-            "{{ keystone_mysql_keystone_password }}" }'
+            "{{ keystone_mysql_keystone_password }}",
+          "keystone_docker_host" : "{{ ansible_docker0['ipv4']['address'] }}" }'
     detach: no
     state: present
 

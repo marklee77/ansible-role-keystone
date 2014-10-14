@@ -15,8 +15,7 @@
     - { section: DEFAULT, 
         option: admin_token, value: "{{ keystone_identity_admin_token }}" }
     - { section: database, option: connection,
-        value: "mysql://keystone:{{ keystone_mysql_keystone_password }}@{{ 
-                  keystone_mysql_host }}:{{ keystone_mysql_port }}/keystone" }
+        value: "mysql://keystone:{{ keystone_mysql_keystone_password }}@{{ keystone_docker_host|default(keystone_mysql_host) }}:{{ keystone_mysql_port }}/keystone" }
   register: modify_keystone_ini
 
 - name: ensure keystone sqlite is deleted
