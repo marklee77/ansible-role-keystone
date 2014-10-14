@@ -24,8 +24,8 @@ keystone_mysql_host: 127.0.0.1
 keystone_mysql_port: 3306
 
 keystone_log_dir: /var/log/keystone
-keystone_log_verbose: True
-keystone_log_debug: False
+keystone_log_verbose: true
+keystone_log_debug: false
 
 keystone_identity_endpoint_host: 127.0.0.1
 keystone_identity_admin_url: >
@@ -36,7 +36,6 @@ keystone_identity_public_url: >
   http://{{ keystone_identity_endpoint_host }}:5000/v2.0
 
 keystone_identity_region: RegionOne
-keystone_identity_demo_password: password
 
 # The variables below only apply to dockerized deployment
 keystone_dockerized_deployment: false
