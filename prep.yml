@@ -4,6 +4,10 @@
   sudo: True
   roles:
     - { role: marklee77.docker, when: keystone_dockerized_deployment }
+
+- hosts: all
+  gather_facts: True
+  sudo: True
     - marklee77.mariadb
 
 - hosts: all
