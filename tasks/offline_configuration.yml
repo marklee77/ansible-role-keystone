@@ -2,6 +2,9 @@
 - name: ensure keystone is properly configured
   ini_file:
     dest: /etc/keystone/keystone.conf
+    owner: keystone
+    group: keystone
+    mode: 0600
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"
