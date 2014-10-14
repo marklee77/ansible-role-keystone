@@ -21,6 +21,8 @@ install:
     #- sudo apt-get -y install ansible
     #- ansible-playbook --version
     - pip install ansible
+    - ansible-playbook -i inventories/local.ini getreqs.yml
+    - ansible-playbook -i inventories/local.ini prep.yml
 
 script:
 
