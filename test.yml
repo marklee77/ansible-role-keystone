@@ -34,3 +34,9 @@
         tenant: demo
         user: demo
         role: _member_
+
+    - name: update demo.openrc from template
+      template:
+        src: templates/demo.openrc
+        dest: "{{ ansible_env.PWD }}/demo.openrc"
+        owner: "{{ ansible_ssh_user }}"
