@@ -13,7 +13,7 @@
 - name: wait until keystone service is ready
   wait_for:
     delay: 1
-    host: "{{ keystone_identity_endpoint_host }}"
+    host: "{{ keystone_identity_host }}"
     port: 35357
     state: started
 
