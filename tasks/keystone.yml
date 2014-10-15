@@ -3,50 +3,50 @@
 
 - name: create admin tenant
   keystone_user:
-    endpoint: "{{ keystone_identity_admin_url }}"
-    token: "{{ keystone_identity_admin_token }}"
+    endpoint: "{{ openstack_identity_admin_url }}"
+    token: "{{ openstack_identity_admin_token }}"
     tenant: admin
     tenant_description: "Admin Tenant"
 
 - name: create admin user
   keystone_user:
-    endpoint: "{{ keystone_identity_admin_url }}"
-    token: "{{ keystone_identity_admin_token }}"
+    endpoint: "{{ openstack_identity_admin_url }}"
+    token: "{{ openstack_identity_admin_token }}"
     tenant: admin
     user: admin
-    password: "{{ keystone_identity_admin_password }}"
+    password: "{{ openstack_identity_admin_password }}"
 
 - name: create admin role and associate it with admin user
   keystone_user:
-    endpoint: "{{ keystone_identity_admin_url }}"
-    token: "{{ keystone_identity_admin_token }}"
+    endpoint: "{{ openstack_identity_admin_url }}"
+    token: "{{ openstack_identity_admin_token }}"
     tenant: admin
     user: admin
     role: admin
 
 - name: associate _member_ role with the admin user
   keystone_user:
-    endpoint: "{{ keystone_identity_admin_url }}"
-    token: "{{ keystone_identity_admin_token }}"
+    endpoint: "{{ openstack_identity_admin_url }}"
+    token: "{{ openstack_identity_admin_token }}"
     tenant: admin
     user: admin
     role: _member_
 
 - name: create service tenant
   keystone_user:
-    endpoint: "{{ keystone_identity_admin_url }}"
-    token: "{{ keystone_identity_admin_token }}"
+    endpoint: "{{ openstack_identity_admin_url }}"
+    token: "{{ openstack_identity_admin_token }}"
     tenant: service
     tenant_description: "Service Tenant"
 
 - name: add keystone endpoint information
   keystone_service:
-    endpoint: "{{ keystone_identity_admin_url }}"
-    token: "{{ keystone_identity_admin_token }}"
-    region: "{{ keystone_identity_region }}"
+    endpoint: "{{ openstack_identity_admin_url }}"
+    token: "{{ openstack_identity_admin_token }}"
+    region: "{{ openstack_default_region }}"
     name: keystone
     type: identity
     description: "Identity Service"
-    public_url: "{{ keystone_identity_public_url }}"
-    internal_url: "{{ keystone_identity_internal_url }}"
-    admin_url: "{{ keystone_identity_admin_url }}"
+    public_url: "{{ openstack_identity_public_url }}"
+    internal_url: "{{ openstack_identity_internal_url }}"
+    admin_url: "{{ openstack_identity_admin_url }}"

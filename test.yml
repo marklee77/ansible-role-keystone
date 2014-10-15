@@ -2,7 +2,7 @@
 - hosts: all
   sudo: True
   vars: 
-    identity_demo_password: password
+    openstack_identity_demo_password: password
 
   tasks:
 
@@ -14,23 +14,23 @@
 
     - name: create demo tenant
       keystone_user:
-        endpoint: "{{ keystone_identity_admin_url }}"
-        token: "{{ keystone_identity_admin_token }}"
+        endpoint: "{{ openstack_identity_admin_url }}"
+        token: "{{ openstack_identity_admin_token }}"
         tenant: demo
         tenant_description: "Demo Tenant"
 
     - name: create demo user
       keystone_user:
-        endpoint: "{{ keystone_identity_admin_url }}"
-        token: "{{ keystone_identity_admin_token }}"
+        endpoint: "{{ openstack_identity_admin_url }}"
+        token: "{{ openstack_identity_admin_token }}"
         tenant: demo
         user: demo
         password: "{{ identity_demo_password }}"
 
     - name: associate _member_ role with demo user
       keystone_user:
-        endpoint: "{{ keystone_identity_admin_url }}"
-        token: "{{ keystone_identity_admin_token }}"
+        endpoint: "{{ openstack_identity_admin_url }}"
+        token: "{{ openstack_identity_admin_token }}"
         tenant: demo
         user: demo
         role: _member_
