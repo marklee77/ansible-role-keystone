@@ -9,7 +9,7 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
-    - { section: DEFAULT, option: log_dir, value: "{{ openstack_log_dir }}" }
+    - { section: DEFAULT, option: log_dir, value: /var/log/keystone }
     - { section: DEFAULT, option: verbose, value: "{{ openstack_log_verbose }}" }
     - { section: DEFAULT, option: debug, value: "{{ openstack_log_debug }}" }
     - { section: DEFAULT, 
@@ -27,7 +27,8 @@
 - name: ensure database is synced
   command: /usr/bin/keystone-manage db_sync
   when: keystone_dockerize_context is defined or
-        create_keystone_db|changed
+        create_keystone_db|changed or
+        modify_keystone_ini|changed
 
 - name: restart keystone
   service:
