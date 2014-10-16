@@ -54,21 +54,21 @@
     detach: no
     state: present
 
-- name: wait until offline configuration is completed
+- name: wait until configuration is completed
   command: docker wait "{{ keystone_docker_containername }}_data"
   register: docker_wait
   changed_when: false
 
-- name: collect offline configuration log
+- name: collect configuration log
   command: docker logs "{{ keystone_docker_containername }}_data"
   register: configure_log
   changed_when: false
 
-- name: display offline configuration log
+- name: display configuration log
   debug:
     msg: "{{ configure_log.stdout_lines }}"
 
-- name: fail on offline configuration failure
+- name: fail on configuration failure
   assert:
     that: docker_wait.stdout == "0"
 
