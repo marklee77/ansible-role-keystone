@@ -45,12 +45,12 @@
         -i inventories/local.ini playbooks/configure.yml -e '{ 
           "openstack_log_verbose" : "{{ openstack_log_verbose }}",
           "openstack_log_debug" : "{{ openstack_log_debug }}",
+          "openstack_identity_admin_token" : 
+            "{{ openstack_identity_admin_token }}",
           "openstack_mysql_host" : "{{ openstack_mysql_host }}",
           "openstack_mysql_port" : "{{ openstack_mysql_port }}",
           "openstack_mysql_keystone_password" : 
-            "{{ openstack_mysql_keystone_password }}",
-          "openstack_identity_admin_token" : 
-            "{{ openstack_identity_admin_token }}" }'
+            "{{ openstack_mysql_keystone_password }}" }'
     detach: no
     state: present
 
