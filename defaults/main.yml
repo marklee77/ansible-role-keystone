@@ -26,7 +26,7 @@ openstack_mysql_port: 3306
 openstack_log_verbose: true
 openstack_log_debug: false
 
-openstack_identity_endpoint_host: 127.0.0.1
+openstack_identity_endpoint_host: "{{ ansible_eth0.ipv4.address }}"
 openstack_identity_admin_url: >
   http://{{ openstack_identity_endpoint_host }}:35357/v2.0
 openstack_identity_internal_url: >
