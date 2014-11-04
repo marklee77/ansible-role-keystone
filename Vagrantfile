@@ -15,16 +15,10 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "docker" do |d|
-    d.image      = "marklee77/baseimage-python-docker"
-    d.cmd        = ["/sbin/my_init", "--enable-insecure-key"]
+    d.image      = "marklee77/ubuntu-trusty-vagrantbox"
     d.has_ssh    = true
     d.privileged = true
   end
-
-  config.vm.synced_folder local_cache('ubuntu/trusty64'), 
-                          "/var/cache/apt/archives/"
-  config.ssh.username = "root"
-  config.ssh.private_key_path = "keys/phusion.key"
 
   config.vm.define "standard", primary: true do |machine|
 
@@ -44,14 +38,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.playbook = "provisioning/deploy.yml"
       ansible.extra_vars = {
         #keystone_dockerized_deployment: true,
-        openstack_mysql_host: "{{ ansible_docker0['ipv4']['address'] }}",
-        openstack_identity_endpoint_host: "{{ ansible_docker0['ipv4']['address'] }}"
+        #openstack_mysql_host: "{{ ansible_docker0['ipv4']['address'] }}",
+        #openstack_identity_endpoint_host: "{{ ansible_docker0['ipv4']['address'] }}"
       }
     end
 
     config.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/test.yml"
     end
+
   end
 
   config.vm.define "docker-build-image", autostart: false do |machine|
