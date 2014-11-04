@@ -5,12 +5,11 @@
     state: latest 
     update_cache: yes 
     cache_valid_time: 600
+  when: ansible_distribution_release == "precise"
 
 - name: ensure that ubuntu cloud archive is available if needed
-  apt_repository: 
-    repo: cloud-archive:icehouse
-    state: present
-    update_cache: yes 
+  command: apt-add-repository cloud-archive:icehouse
+  when: ansible_distribution_release == "precise"
   
 - name: ensure keystone packages and dependencies are installed
   apt: 
