@@ -16,6 +16,15 @@
   sudo: True
   tasks:
 
+    - name: ensure that pip is installed
+      command: curl -s https://bootstrap.pypa.io/get-pip.py | python -
+               creates=/usr/local/bin/pip
+
+    - name: ensure that docker client python library is installed
+      pip:
+        name: docker-py
+        state: latest
+
     - name: ensure required packages for prep are installed
       apt:
         pkg: "{{ item }}"
