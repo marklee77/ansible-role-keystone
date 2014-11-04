@@ -23,7 +23,6 @@ install:
     - pip install ansible
     - ansible-playbook -i inventories/local.ini provisioning/getreqs.yml
     - ansible-playbook -i inventories/local.ini provisioning/prep.yml
-    - ansible -i inventories/local.ini -m setup all
 
 script:
 
