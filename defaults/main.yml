@@ -36,6 +36,8 @@ openstack_identity_public_url: >
 
 openstack_default_region: RegionOne
 
+openstack_identity_token_expiration: 3600
+
 # The variables below only apply to dockerized deployment
 keystone_dockerized_deployment: false
 keystone_docker_username: default
