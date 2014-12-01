@@ -28,6 +28,14 @@
     state: started 
     enabled: yes
 
+- name: install script for cron job to periodically remove expired tokens from the database
+  copy:
+    dest: /etc/cron.daily/keystone-token-flush
+    owner: root
+    group: root
+    mode: 0755
+    content: "#!/bin/sh\n/usr/bin/keystone-manage token_flush\n"
+    
 - name: ensure keystone is properly shut down for dockerized deployments
   service:
     name: keystone
