@@ -2,6 +2,8 @@
 # FIXME: creation of admin tenant should go into configuration phase?
 
 - name: create admin tenant
+  environment:
+    http_proxy: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -9,6 +11,8 @@
     tenant_description: "Admin Tenant"
 
 - name: create admin user
+  environment:
+    http_proxy: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -17,6 +21,8 @@
     password: "{{ openstack_identity_admin_password }}"
 
 - name: create admin role and associate it with admin user
+  environment:
+    http_proxy: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -25,6 +31,8 @@
     role: admin
 
 - name: associate _member_ role with the admin user
+  environment:
+    http_proxy: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -33,6 +41,8 @@
     role: _member_
 
 - name: create service tenant
+  environment:
+    http_proxy: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -40,6 +50,8 @@
     tenant_description: "Service Tenant"
 
 - name: add keystone endpoint information
+  environment:
+    http_proxy: ''
   keystone_service:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
