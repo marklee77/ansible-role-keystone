@@ -35,8 +35,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "provisioning/deploy.yml"
     #ansible.extra_vars = {
     #  keystone_dockerized_deployment: true,
-    #  openstack_mysql_host: "{{ ansible_docker0['ipv4']['address'] }}",
-    #  openstack_identity_endpoint_host: "{{ ansible_docker0['ipv4']['address'] }}"
+    #  openstack_mysql_host: "{{ ansible_docker0.ipv4.address }}",
+    #  openstack_identity_endpoint_host: "{{ ansible_docker0.ipv4.address }}"
     #}
   end
 
