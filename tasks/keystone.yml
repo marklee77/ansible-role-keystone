@@ -4,6 +4,7 @@
 - name: create admin tenant
   environment:
     http_proxy: ''
+    HTTP_PROXY: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -13,6 +14,7 @@
 - name: create admin user
   environment:
     http_proxy: ''
+    HTTP_PROXY: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -23,6 +25,7 @@
 - name: create admin role and associate it with admin user
   environment:
     http_proxy: ''
+    HTTP_PROXY: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -33,6 +36,7 @@
 - name: associate _member_ role with the admin user
   environment:
     http_proxy: ''
+    HTTP_PROXY: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -43,6 +47,7 @@
 - name: create service tenant
   environment:
     http_proxy: ''
+    HTTP_PROXY: ''
   keystone_user:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
@@ -52,6 +57,7 @@
 - name: add keystone endpoint information
   environment:
     http_proxy: ''
+    HTTP_PROXY: ''
   keystone_service:
     endpoint: "{{ openstack_identity_admin_url }}"
     token: "{{ openstack_identity_admin_token }}"
