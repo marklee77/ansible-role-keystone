@@ -18,9 +18,9 @@
     update_cache: yes 
     cache_valid_time: 600
   with_items:
+    - keystone
     - python-keystoneclient
     - python-mysqldb
-    - keystone
 
 - name: ensure keystone is started and enabled
   service: 
@@ -28,36 +28,10 @@
     state: started 
     enabled: yes
 
-- name: install script for cron job to periodically remove expired tokens from the database
+- name: install script for cron job to periodically flush expired tokens
   copy:
+    content: "#!/bin/sh\n/usr/bin/keystone-manage token_flush\n"
     dest: /etc/cron.daily/keystone-token-flush
     owner: root
     group: root
     mode: 0755
-    content: "#!/bin/sh\n/usr/bin/keystone-manage token_flush\n"
-    
-- name: ensure keystone is properly shut down for dockerized deployments
-  service:
-    name: keystone
-    state: stopped
-    enabled: yes
-  when: keystone_dockerize_context is defined
-
-- name: ensure supervisor is installed for dockerized deployments
-  apt:
-    pkg: "{{ item }}"
-    state: latest
-    update_cache: yes
-    cache_valid_time: 600
-  with_items:
-    - supervisor
-  when: keystone_dockerize_context is defined
-
-- name: update supervisor configuration from template for dockerized deployments
-  template:
-    src: etc/supervisor/conf.d/supervisord.conf
-    dest: /etc/supervisor/conf.d/supervisord.conf
-    owner: root
-    group: root
-    mode: 0644
-  when: keystone_dockerize_context is defined
