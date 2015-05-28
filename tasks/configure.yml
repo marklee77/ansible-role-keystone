@@ -20,6 +20,10 @@
         option: expiration, value: "{{ openstack_identity_token_expiration }}" }
   register: modify_keystone_ini
 
+- name: ensure database is synced
+  command: /usr/bin/keystone-manage db_sync
+  when: create_keystone_db|changed or modify_keystone_ini|changed
+
 - name: restart keystone
   service:
     name: keystone
@@ -30,5 +34,3 @@
   file:
     dest: /var/lib/keystone/keystone.sqlite
     state: absent
-
-
