@@ -1,10 +1,10 @@
 ---
 - name: wait until keystone service is ready
-    wait_for:
-      delay: 1
-      host: "{{ openstack_identity_endpoint_host }}"
-      port: 35357
-      state: started
+  wait_for:
+    delay: 1
+    host: "{{ openstack_identity_endpoint_host }}"
+    port: 35357
+    state: started
 
 - name: create admin tenant
   environment:
