@@ -6,7 +6,7 @@
 
     - name: check out roles needed for test deployment from github.com
       git:
-        repo: 'https://github.com/marklee77/ansible-role-mariadb.git'
+        repo: 'https://github.com/marklee77/ansible-role-mysql.git'
         dest: roles/marklee77.mariadb
         update: yes
 
