@@ -1,5 +1,5 @@
-marklee77.keystone
-=================
+keystone ansible role
+=====================
 
 [![Build Status](https://travis-ci.org/marklee77/ansible-role-keystone.svg?branch=master)](https://travis-ci.org/marklee77/ansible-role-keystone)
 
@@ -19,7 +19,7 @@ Example Playbook
     - hosts: all
       sudo: True
       roles:
-        - marklee77.keystone
+        - keystone
 
 License
 -------

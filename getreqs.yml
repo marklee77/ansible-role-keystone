@@ -8,7 +8,7 @@
     - name: check out roles needed for demo deployment from github.com
       git:
         repo: 'https://github.com/openstack-ansible/ansible-role-{{ item }}.git'
-        dest: roles/marklee77.{{ item }}
+        dest: roles/{{ item }}
         update: yes
       with_items:
         - mysql
