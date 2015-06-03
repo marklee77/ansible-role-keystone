@@ -6,7 +6,7 @@ before_install:
 
     - sudo apt-get update
     - sudo apt-get install python-software-properties
-    - sudo add-apt-repository cloud-archive:icehouse
+    - sudo add-apt-repository -y cloud-archive:icehouse
     - sudo apt-get update
 
 install:
