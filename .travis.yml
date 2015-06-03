@@ -4,14 +4,14 @@ python: "2.7"
 
 before_install:
 
-    - apt-get update
-    - apt-get install python-software-properties
-    - add-apt-repository cloud-archive:icehouse
+    - sudo apt-get update
+    - sudo apt-get install python-software-properties
+    - sudo add-apt-repository cloud-archive:icehouse
+    - sudo apt-get update
 
 install:
 
-    # Install Ansible.
-    - pip install ansible
+    - sudo pip install ansible
     - ansible-playbook -i inventories/local.ini getreqs.yml
     - ansible-playbook -i inventories/local.ini prepare-vm.yml
 
