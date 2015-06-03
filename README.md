@@ -1,6 +1,8 @@
 keystone ansible role
 =====================
 
+[![Build Status](https://travis-ci.org/marklee77/ansible-role-keystone.svg?branch=master)](https://travis-ci.org/marklee77/ansible-role-keystone)
+
 The purpose of this role is to deploy keystone onto Ubuntu. 
 
 Role Variables
