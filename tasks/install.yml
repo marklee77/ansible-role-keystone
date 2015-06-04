@@ -1,20 +1,4 @@
 ---
-- name: gather os specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_distribution|lower }}-{{
-              ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution|lower }}-{{
-              ansible_distribution_release }}.yml"
-        - "{{ ansible_distribution|lower }}-{{
-              ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution|lower }}.yml"
-        - "{{ ansible_os_family|lower }}.yml"
-        - defaults.yml
-      paths:
-        - ../vars
-
 - name: ensure openstack keystone requirements packages are installed
   action: "{{ openstack_keystone_package_info.pkg_mgr }}"
   args: openstack_keystone_package_info.args
