@@ -24,10 +24,11 @@
   command: /usr/bin/keystone-manage db_sync
   when: create_keystone_db|changed or modify_keystone_ini|changed
 
-- name: restart keystone
+- name: restart keystone services if necessary
   service:
-    name: keystone
+    name: "{{ item }}"
     state: restarted
+  with_items: openstack_keystone_services
   when: modify_keystone_ini|changed
 
 - name: ensure keystone sqlite is deleted
