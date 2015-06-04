@@ -1,0 +1,23 @@
+openstack_keystone_package_info:
+  pkg_mgr: apt
+  args:
+    pkg: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 600
+    state: latest
+  pre_pkgs: []
+  pkgs:
+    - keystone
+    - python-keystoneclient
+    - python-mysqldb
+
+openstack_keystone_repo_info:
+  pkg_repo: apt_repository
+  args:
+    repo: "{{ item }}"
+    update_cache: yes
+    state: present
+  repos: []
+
+openstack_keystone_services:
+  - keystone
