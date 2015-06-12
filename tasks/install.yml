@@ -23,6 +23,7 @@
     state: started
     enabled: yes
   with_items: openstack_keystone_services
+  when: openstack_keystone_services|length > 0
 
 - name: install script for cron job to periodically flush expired tokens
   copy:
