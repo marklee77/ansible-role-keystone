@@ -1,5 +1,5 @@
 ---
-- name: ensure keystone is properly configured
+- name: ensure keystone.conf is properly configured
   ini_file:
     dest: /etc/keystone/keystone.conf
     group: keystone
