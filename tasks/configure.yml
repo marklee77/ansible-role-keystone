@@ -20,7 +20,8 @@
         option: expiration, value: "{{ openstack_identity_token_expiration }}" }
   register: modify_keystone_ini
 
-- name: ensure database is synced
+- name: ensure keystone database has been populated with required tables
+  sudo_user: keystone
   command: /usr/bin/keystone-manage db_sync
   when: create_keystone_db|changed or modify_keystone_ini|changed
 
