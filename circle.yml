@@ -14,7 +14,7 @@ test:
     # Run the role/playbook with ansible-playbook.
     - ansible-playbook -i inventories/local.ini deploy.yml
 
-    # idempotence Test
+    # Test Idempotence
     - >
       ansible-playbook -i inventories/local.ini deploy.yml
       | grep -q 'changed=0.*failed=0'
