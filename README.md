@@ -3,6 +3,7 @@ keystone ansible role
 
 [![Build Status](https://travis-ci.org/marklee77/ansible-role-keystone.svg?branch=master)](https://travis-ci.org/marklee77/ansible-role-keystone)
 [![Circle CI](https://circleci.com/gh/marklee77/ansible-role-keystone/tree/master.svg?style=shield&circle-token=0c664f98ae3751e2c2dc6bd737f2834b03231668)](https://circleci.com/gh/marklee77/ansible-role-keystone/)
+[![Semaphore CI](https://semaphoreci.com/api/v1/projects/861b1765-d0f6-487b-a88b-2caae0b201da/456837/badge.svg)](https://semaphoreci.com/marklee/ansible-role-keystone)
 
 The purpose of this role is to deploy keystone onto Ubuntu. 
 
